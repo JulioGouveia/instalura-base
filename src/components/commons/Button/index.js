@@ -1,6 +1,5 @@
 import styled, {css} from 'styled-components';
 import get from 'lodash/get';
-import set from 'lodash/set';
 
 const ButtonDefault = css `
     color: ${({theme, variant}) => get(theme, `colors.${variant}.contrastText`)};
@@ -18,8 +17,8 @@ export const Button = styled.button`
     padding: 12px 26px;
     font-weight: bold;
     opacity: 1;
-    border-radius: ${(theme) => theme.transition};
-    transition: ${(theme) => theme.transition};
+    border-radius: ${({theme}) => theme.borderRadius};
+    transition: ${({theme}) => theme.transition};
     ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)};
     &:hover,
     &:focus {
