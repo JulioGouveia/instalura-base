@@ -1,9 +1,11 @@
 import React from 'react';
 import { Logo } from '../../../theme/Logo';
+import { Button } from '../Button';
 import {MenuWrapper} from './styles/MenuWrapper';
 
 
 export default function Menu () {
+
   const links = [
         {
             texto: 'Home',
@@ -36,8 +38,8 @@ export default function Menu () {
         }
       </MenuWrapper.Central>
       <MenuWrapper.RightSide>
-        <button>Entrar</button>
-        <button>Sair</button>
+        <Button ghost variant="secondary.main">Entrar</Button>
+        <Button variant="primary.main">Cadastrar</Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>)
 }
