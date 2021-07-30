@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import {TextStyleVariants} from '../../foundation/Text'
 import get from 'lodash/get';
 
 const ButtonDefault = css `
@@ -12,13 +13,14 @@ const ButtonGhost = css`
     `;
 
 export const Button = styled.button`
-    border: 0;
+       border: 0;
     cursor: pointer;
     padding: 12px 26px;
     font-weight: bold;
     opacity: 1;
     border-radius: ${({theme}) => theme.borderRadius};
     transition: ${({theme}) => theme.transition};
+    ${TextStyleVariants.smallestException}
     ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)};
     &:hover,
     &:focus {
