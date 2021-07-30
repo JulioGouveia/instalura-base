@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {get} from 'lodash';
+import PropTypes from 'prop-types';
 
 const paragraph1 = css`
   ${({ theme }) => css`
@@ -25,10 +25,6 @@ export const TextStyleVariants = {
 
 const TextBase = styled.span`
     ${({variant})=> TextStyleVariants[variant]}
-    
-    
-}
-    
 `;
 
 export function Text ({tag, variant, children, ...props}) {
@@ -37,4 +33,10 @@ export function Text ({tag, variant, children, ...props}) {
             {children}
         </TextBase>
     )
+}
+
+Text.prototype = {
+    tag: PropTypes.string.isRequired,
+    variant: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
 }
