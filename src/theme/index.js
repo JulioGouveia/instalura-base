@@ -1,5 +1,5 @@
 import { breakpoints } from './breakpoints';
-import {typographyVariants} from './typographyVariants'
+import { typographyVariants } from './typographyVariants'
 
 export const colors = {
     background: {
@@ -43,9 +43,9 @@ export const colors = {
   };
   
 export default {
-  colors: colors,
-  typographyVariants: typographyVariants,
-  breakpoints : breakpoints,
+  colors,
+  typographyVariants,
+  breakpoints,
   fontFamily: '\'Rubik\', sans-serif',
   borderRadius: '12px',
   transition: '200ms ease-in-out',

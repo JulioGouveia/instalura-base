@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Text } from '../../foundation/Text';
+
 
 const FooterWrapper = styled.footer`
   padding: 14px;
@@ -27,18 +29,18 @@ const FooterWrapper = styled.footer`
 export default function Footer(props) {
   return (
      <FooterWrapper {...props}>
-      <a href="https://www.alura.com.br/">
+      <Text tag="a" href="https://www.alura.com.br/">
         <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
-      </a>
-      <p>
+      </Text>
+      <Text variant="paragraph2" tag="p" color="tertiary.light" >
         Orgulhosamente criado durante
         {' '}
         o
         {' '}
-        <a href="https://www.alura.com.br/">
-          <span>Bootcamp Alura JAM Stack</span>
-        </a>
-      </p>
+        <Text tag="a" href="https://www.alura.com.br/">
+          <Text>Bootcamp Alura JAM Stack</Text>
+        </Text>
+      </Text>
     </FooterWrapper>
   );
 } 
