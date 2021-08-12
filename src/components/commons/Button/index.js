@@ -31,8 +31,10 @@ export const Button = styled.button`
       ${TextStyleVariants.paragraph1}
     `,
   })}
+  
   ${propToStyle('margin')}
   ${propToStyle('display')}
+
   ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}
   &:hover,
   &:focus {

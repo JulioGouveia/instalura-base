@@ -1,4 +1,4 @@
-  import React from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ const paragraph1 = css`
     font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
     line-height: ${theme.typographyVariants.paragraph1.lineHeight};
   `}
-`;
+`
 
 const smallestException = css`
   ${({ theme }) => css`
@@ -19,7 +19,15 @@ const smallestException = css`
     font-weight: ${theme.typographyVariants.smallestException.fontWeight};
     line-height: ${theme.typographyVariants.smallestException.lineHeight};
   `}
-`;
+`
+
+const paragraph2 = css`
+ ${({ theme }) => css`
+    font-size: ${theme.typographyVariants.paragraph2.fontSize};
+    font-weight: ${theme.typographyVariants.paragraph2.fontWeight};
+    line-height: ${theme.typographyVariants.paragraph2.lineHeight};
+  `}
+`
 
 export const TextStyleVariants = {
   smallestException,
