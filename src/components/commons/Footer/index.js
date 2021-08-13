@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable linebreak-style */
+
 import React from 'react';
 import styled from 'styled-components';
 import { Text } from '../../foundation/Text';
-
 
 const FooterWrapper = styled.footer`
   padding: 14px;
@@ -28,11 +30,14 @@ const FooterWrapper = styled.footer`
 
 export default function Footer(props) {
   return (
-     <FooterWrapper {...props}>
+    <FooterWrapper {...props}>
       <Text tag="a" href="https://www.alura.com.br/">
-        <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Logo Alura" />
+        <img
+          src="https://www.alura.com.br/assets/img/alura-logo.svg"
+          alt="Logo Alura"
+        />
       </Text>
-      <Text variant="paragraph2" tag="p" color="tertiary.light" >
+      <Text variant="paragraph2" tag="p" color="tertiary.light">
         Orgulhosamente criado durante
         {' '}
         o
@@ -43,4 +48,4 @@ export default function Footer(props) {
       </Text>
     </FooterWrapper>
   );
-} 
+}

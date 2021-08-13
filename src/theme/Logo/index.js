@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable import/prefer-default-export */
+
 import React from 'react';
 
 export function Logo() {

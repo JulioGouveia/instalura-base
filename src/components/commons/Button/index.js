@@ -1,5 +1,10 @@
-import styled, { css } from 'styled-components';
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable linebreak-style */
+
 import get from 'lodash/get';
+import styled, { css } from 'styled-components';
 import { TextStyleVariants } from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../theme/utils/propToStyle';

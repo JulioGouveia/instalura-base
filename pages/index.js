@@ -1,13 +1,17 @@
-import Footer from '../src/components/commons/Footer'
-import Menu from '../src/components/commons/Menu'
-import { Text } from '../src/components/foundation/Text'
-import { Button } from '../src/components/commons/Button'
-import { Grid } from '../src/components/foundation/Grid'
-import { Box } from '../src/components/commons/box'
+/* eslint-disable linebreak-style */
+/* eslint-disable import/no-unresolved */
+
+import React from 'react';
+import Footer from '../src/components/commons/Footer';
+import Menu from '../src/components/commons/Menu';
+import { Text } from '../src/components/foundation/Text';
+import { Button } from '../src/components/commons/Button';
+import { Grid } from '../src/components/foundation/Grid';
+import { Box } from '../src/components/commons/box';
 
 export default function Home() {
   return (
-    <Box 
+    <Box
       flex="1"
       display="flex"
       flexWrap="wrap"
@@ -21,13 +25,13 @@ export default function Home() {
 
       <Grid.Container>
         <Grid.Row>
-          <Grid.Col 
-            offset={1} 
+          <Grid.Col
+            offset={1}
             value={{ xs: 12, md: 5 }}
-            display= "flex"
-            flexDirection = "column"
-            alignItems = "flex-start"
-            justifyContent = "center"
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+            justifyContent="center"
           >
             <Text
               variant="title"
@@ -64,10 +68,11 @@ export default function Home() {
               Cadastrar
             </Button>
           </Grid.Col>
-          <Grid.Col  value={{ xs: 12, md: 6 }}>
+          <Grid.Col value={{ xs: 12, md: 6 }}>
             <img
               style={{ display: 'block', margin: 'auto' }}
               src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
+              alt="Imagem de celular com o instalura aberto no perfil do nicolas cage"
             />
           </Grid.Col>
         </Grid.Row>
@@ -75,5 +80,5 @@ export default function Home() {
 
       <Footer />
     </Box>
-  )
+  );
 }

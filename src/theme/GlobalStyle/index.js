@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize'
 
@@ -11,8 +13,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        font-family: ${({theme}) => theme.fontFamily};
-  
+        font-family: ${({ theme }) => theme.fontFamily};
     }
 
     /* Full height layout */
@@ -26,6 +27,6 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     }
-`
-export default GlobalStyle;
+`;
 
+export default GlobalStyle;
