@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-// import { propToStyle } from '../../../../theme/utils/propToStyle';
+import { propToStyle } from '../../../theme/utils/propToStyle';
+
 
 const Container = styled.div`
     width: 100%;
@@ -112,11 +113,18 @@ const Col = styled.div`
       }),
     });
   }}
+
+  ${propToStyle('display')}
+  ${propToStyle('flexDirection')}
+  ${propToStyle('alignItems')}
+  ${propToStyle('justifyContent')}
+
 `;
 
 Col.defaultProps = {
   value: {},
   offset: {},
+
 };
 
 const Row = styled.div`
