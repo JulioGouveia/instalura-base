@@ -19,5 +19,7 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'eslint-disable import/prefer-default-export': 'off',
+    'eslint-disable linebreak-style': 'on',
   },
 };

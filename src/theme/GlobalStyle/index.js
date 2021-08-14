@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 
 import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize'
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
     * {
