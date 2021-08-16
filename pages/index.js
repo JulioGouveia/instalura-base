@@ -1,6 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-unresolved */
-
 import React from 'react';
 import Footer from '../src/components/commons/Footer';
 import Menu from '../src/components/commons/Menu';
@@ -8,8 +5,12 @@ import { Text } from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/Grid';
 import { Box } from '../src/components/commons/box';
+import Modal from '../src/components/commons/Modal';
 
 export default function Home() {
+
+  const [isModalOpen, setModalState] = React.useState(false);
+
   return (
     <Box
       flex="1"
@@ -21,8 +22,30 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      <Menu />
 
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      > 
+      {(propsDoModal) => {  
+            return (
+              <Box
+                backgroundColor="white"
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...propsDoModal}
+              >
+                <div>
+                  Nosso conteúdo pro modal
+                </div>
+              </Box>
+            )
+      }}
+      </Modal>
+
+      <Menu />
+      
       <Grid.Container>
         <Grid.Row>
           <Grid.Col
@@ -64,6 +87,9 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                setModalState(!isModalOpen)
+              }}
             >
               Cadastrar
             </Button>
