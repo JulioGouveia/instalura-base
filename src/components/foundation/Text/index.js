@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 import React from 'react';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
@@ -11,7 +13,7 @@ const paragraph1 = css`
     font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
     line-height: ${theme.typographyVariants.paragraph1.lineHeight};
   `}
-`
+`;
 
 const smallestException = css`
   ${({ theme }) => css`
@@ -19,7 +21,7 @@ const smallestException = css`
     font-weight: ${theme.typographyVariants.smallestException.fontWeight};
     line-height: ${theme.typographyVariants.smallestException.lineHeight};
   `}
-`
+`;
 
 const paragraph2 = css`
  ${({ theme }) => css`
@@ -27,11 +29,12 @@ const paragraph2 = css`
     font-weight: ${theme.typographyVariants.paragraph2.fontWeight};
     line-height: ${theme.typographyVariants.paragraph2.lineHeight};
   `}
-`
+`;
 
 export const TextStyleVariants = {
   smallestException,
   paragraph1,
+  paragraph2,
   title: css`
     ${({ theme }) => css`
       font-size: ${theme.typographyVariants.titleXS.fontSize};
@@ -39,14 +42,14 @@ export const TextStyleVariants = {
       line-height: ${theme.typographyVariants.titleXS.lineHeight};
     `}
     ${breakpointsMedia({
-      md: css`
+    md: css`
         ${({ theme }) => css`
           font-size: ${theme.typographyVariants.title.fontSize};
           font-weight: ${theme.typographyVariants.title.fontWeight};
           line-height: ${theme.typographyVariants.title.lineHeight};
         `}
       `,
-    })}
+  })}
   `,
 };
 
@@ -82,5 +85,5 @@ Text.defaultProps = {
 Text.propTypes = {
   children: PropTypes.node.isRequired,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
-  variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
+  variant: PropTypes.oneOf(['title', 'paragraph1', 'paragraph2', 'smallestException']),
 };

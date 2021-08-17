@@ -1,4 +1,7 @@
-import styled, { css } from 'styled-components'
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable linebreak-style */
+
+import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
 import { TextStyleVariants } from '../../../foundation/Text';
 
@@ -91,7 +94,7 @@ MenuWrapper.Central = styled.div`
       ${TextStyleVariants.paragraph1}
     `,
   })}
-
+  }
     a {
       text-align: center;
       display: block;
@@ -103,7 +106,7 @@ MenuWrapper.Central = styled.div`
               font-weight: 500;
               color: #070C0E;
           }      
-  }
+    }
 `;
 
 MenuWrapper.RightSide = styled.div`

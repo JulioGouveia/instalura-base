@@ -1,6 +1,9 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable import/prefer-default-export */
+
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-// import { propToStyle } from '../../../../theme/utils/propToStyle';
+import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const Container = styled.div`
     width: 100%;
@@ -30,8 +33,9 @@ const Container = styled.div`
     xl: css`
         max-width: 1222px;
     `,
-    })}
-`
+  })}
+`;
+
 const Col = styled.div`
   padding-right: 16px;
   padding-left: 16px;
@@ -112,11 +116,18 @@ const Col = styled.div`
       }),
     });
   }}
+
+  ${propToStyle('display')}
+  ${propToStyle('flexDirection')}
+  ${propToStyle('alignItems')}
+  ${propToStyle('justifyContent')}
+
 `;
 
 Col.defaultProps = {
   value: {},
   offset: {},
+
 };
 
 const Row = styled.div`
@@ -124,10 +135,10 @@ const Row = styled.div`
     flex-wrap: wrap;
     margin-right: -16px;
     margin-left: -16px;
-`
+`;
 
 export const Grid = {
   Container,
   Row,
   Col,
-}; 
+};

@@ -1,23 +1,58 @@
-import Footer from '../src/components/commons/Footer'
-import Menu from '../src/components/commons/Menu'
-import { Text } from '../src/components/foundation/Text'
-import { Button } from '../src/components/commons/Button'
-import { Grid } from '../src/components/foundation/Grid'
+import React from 'react';
+import Footer from '../src/components/commons/Footer';
+import Menu from '../src/components/commons/Menu';
+import { Text } from '../src/components/foundation/Text';
+import { Button } from '../src/components/commons/Button';
+import { Grid } from '../src/components/foundation/Grid';
+import { Box } from '../src/components/commons/Box';
+import Modal from '../src/components/commons/Modal';
 
 export default function Home() {
+  const [isModalOpen, setModalState] = React.useState(false);
+
   return (
-    <div style={{
-      flex: '1',
-      display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-    }}>
+    <Box
+      flex="1"
+      display="flex"
+      flexWrap="wrap"
+      flexDirection="column"
+      justifyContent="space-between"
+      backgroundImage="url(/bubbles.svg)"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="bottom right"
+    >
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <Box
+            backgroundColor="white"
+                // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+            <div>
+              Nosso conteúdo pro modal
+            </div>
+          </Box>
+        )}
+      </Modal>
+
       <Menu />
 
       <Grid.Container>
         <Grid.Row>
-          <Grid.Col offset={1} value={{ xs: 12, md: 5 }}>
+          <Grid.Col
+            offset={1}
+            value={{ xs: 12, md: 5 }}
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+            justifyContent="center"
+          >
             <Text
               variant="title"
               tag="h1"
@@ -49,20 +84,24 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                setModalState(!isModalOpen);
+              }}
             >
               Cadastrar
             </Button>
           </Grid.Col>
-          <Grid.Col  value={{ xs: 12, md: 6 }}>
+          <Grid.Col value={{ xs: 12, md: 6 }}>
             <img
               style={{ display: 'block', margin: 'auto' }}
               src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
+              alt="Imagem de celular com o instalura aberto no perfil do nicolas cage"
             />
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
 
       <Footer />
-    </div>
-  )
+    </Box>
+  );
 }
