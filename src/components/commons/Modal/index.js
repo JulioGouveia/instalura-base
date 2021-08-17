@@ -1,6 +1,13 @@
+/* eslint-disable indent */
+/* eslint-disable semi */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable no-multiple-empty-lines */
+/* eslint-disable padded-blocks */
+import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+
 
 const ModalWrapper = styled.div`
   display: flex;
@@ -32,16 +39,16 @@ const ModalWrapper = styled.div`
 `;
 
 
-function Modal ({isOpen, onClose, children}) {
+function Modal({ isOpen, onClose, children }) {
 
   const motionVariant = {
-    open : { 
-      x : 0,
+    open: { 
+      x: 0,
     },
-    close : {
-      x : '-100%',
-    } 
-}
+    close: {
+      x: '-100%',
+    },
+  }
 
   return (
     <ModalWrapper
@@ -75,9 +82,9 @@ function Modal ({isOpen, onClose, children}) {
 }
 
 Modal.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    children: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-  };
+  isOpen: PropTypes.bool.isRequired,
+  children: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Modal;
