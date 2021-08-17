@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 
 import { breakpoints } from './breakpoints';
-import { typographyVariants } from './typographyVariants'
+import { typographyVariants } from './typographyVariants';
 
 export const colors = {
   background: {

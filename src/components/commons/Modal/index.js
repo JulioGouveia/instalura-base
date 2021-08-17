@@ -62,8 +62,8 @@ function Modal({ isOpen, onClose, children }) {
       }}
     >
       <motion.div
-        variant = {motionVariant}
-        animate = {isOpen ? 'open': 'close'}
+        variant={motionVariant}
+        animate={isOpen ? 'open' : 'close'}
         transition={{
           duration: 0.5,
         }}

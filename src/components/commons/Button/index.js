@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
 
 import get from 'lodash/get';
 import styled, { css } from 'styled-components';
