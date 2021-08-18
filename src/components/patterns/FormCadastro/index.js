@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
 /* eslint-disable eol-last */
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable react/jsx-props-no-multi-spaces */
@@ -15,6 +15,7 @@
 /* eslint-disable react/jsx-indent */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from '../../commons/Button';
 import TextField from '../../form/TextField';
 import { Text } from '../../foundation/Text';
@@ -123,3 +124,8 @@ export default function FormCadastro ({ propsDoModal }) {
 
     );
 }
+
+FormCadastro.propTypes = {
+    propsDoModal: PropTypes.element.isRequired,
+   
+  };
