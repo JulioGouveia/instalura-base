@@ -17,4 +17,7 @@ export const Box = styled.div`
     ${propToStyle('backgroundRepeat')}
     ${propToStyle('backgroundPosition')}
     ${propToStyle('backgroundColor')}
+
+    ${propToStyle('boxShadow')}
+    ${propToStyle('padding')}
 `;

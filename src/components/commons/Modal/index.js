@@ -3,17 +3,17 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable padded-blocks */
+
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-
 
 const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.1);
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@ const ModalWrapper = styled.div`
   margin: auto;
   overflow: scroll;
   transition: .3s;
-  z-index: 100;
+  z-index: 999;
 
   ${({ isOpen }) => {
     if (isOpen) {
@@ -38,6 +38,11 @@ const ModalWrapper = styled.div`
   }}
 `;
 
+const LockScroll = createGlobalStyle`
+  body {
+    overflow: hidden;
+  }
+`;
 
 function Modal({ isOpen, onClose, children }) {
 
@@ -46,7 +51,7 @@ function Modal({ isOpen, onClose, children }) {
       x: 0,
     },
     close: {
-      x: '-100%',
+      x: '100%',
     },
   }
 
@@ -61,6 +66,7 @@ function Modal({ isOpen, onClose, children }) {
         }
       }}
     >
+      {isOpen && <LockScroll />}
       <motion.div
         variant={motionVariant}
         animate={isOpen ? 'open' : 'close'}
