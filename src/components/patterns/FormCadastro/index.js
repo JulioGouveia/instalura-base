@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
 /* eslint-disable eol-last */
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable react/jsx-props-no-multi-spaces */
@@ -15,18 +15,80 @@
 /* eslint-disable react/jsx-indent */
 
 import React from 'react';
-import { Button } from '../../commons/Button';
+import { Lottie } from '@crello/react-lottie';
+import PropTypes from 'prop-types';
+import sucessAnimation from './animations/sucessAnimation.json';
+import errorAnimation from './animations/errorAnimation.json';
 import TextField from '../../form/TextField';
+import { Button } from '../../commons/Button';
 import { Text } from '../../foundation/Text';
 import { Grid } from '../../foundation/Grid';
 import { Box } from '../../commons/Box';
 
-function FormBase () {
+const formStates = {
+    DEFAULT: 'DEFAULT',
+    LOADING: 'LOADING',
+    DONE: 'DONE',
+    ERROR: 'ERROR',
+  };
 
-    const [formData, setFormData] = React.useState({
-        email: 'lalaland@email.com',
-        usuario: 'lalaland',
-    });
+function SubmitFeedbackForm ({ isFormSubmited, submissionStatus }) {
+
+    if (isFormSubmited && submissionStatus === formStates.DONE) {
+        return (
+            <Box
+                display="flex"
+                justifyContent="space-around"
+            >
+            <Lottie
+                width="150px"
+                height="150px"
+                config={{ 
+                    animationData: sucessAnimation, 
+                    loop: false,
+                    autoplay: true, 
+                }}
+            />
+            {/* https://lottiefiles.com/43920-success-alert-icon */}
+            </Box>
+        );
+    }
+
+    if (isFormSubmited && submissionStatus === formStates.ERROR) {
+        return (
+            <Box
+                display="flex"
+                justifyContent="space-around"
+            >
+            <Lottie
+                width="150px"
+                height="150px"
+                config={{
+                    animationData: errorAnimation, 
+                    loop: false, 
+                    autoplay: true, 
+                    loopComplete: true,
+                }}
+            />
+            {/* https://lottiefiles.com/43920-success-alert-icon */}
+            </Box>
+        );
+    }
+
+    return (<div></div>);
+}
+
+function FormBase ({ setModalState }) {
+
+    const usuarioVazio = {
+        nome: '',
+        usuario: '',
+    };
+
+    const [formData, setFormData] = React.useState(usuarioVazio);
+
+    const [isFormSubmited, setIsFormSubmited] = React.useState(false);
+    const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
 
     function formHandler (event) {
         const fieldName = event.target.getAttribute('name');
@@ -36,13 +98,64 @@ function FormBase () {
        });
      }
 
-     const isFormDisable = formData.usuario.length === 0 || formData.email.length === 0;
+     const isFormDisable = formData.usuario.length === 0 || formData.nome.length === 0;
 
     return (
         <form onSubmit={(event) => {
             event.preventDefault();
-        }}>
 
+            setIsFormSubmited(true);
+
+            const myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+            
+            const cadastroDTO = {
+                username: formData.usuario,
+                name: formData.nome,
+            };
+            
+            const myInit = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify(cadastroDTO),
+            };
+
+            fetch('https://instalura-api.vercel.app/api/users', myInit)
+            .then((respostaDoServidor) => {
+                if (respostaDoServidor.ok) {
+                    return respostaDoServidor.json();
+                }
+                  
+                throw new Error('Não foi possível cadastrar o usuário agora :(');
+              })
+              .then((respostaConvertidaEmObjeto) => {
+                setSubmissionStatus(formStates.DONE);
+                // eslint-disable-next-line no-console
+                console.log(respostaConvertidaEmObjeto);
+              })
+              .catch((error) => {
+                setSubmissionStatus(formStates.ERROR);
+                // eslint-disable-next-line no-console
+                console.error(error);
+              })
+              .finally(() => setFormData(usuarioVazio));
+
+        }}>
+        <Button
+                type="button"
+                margin={{
+                    xs: 'auto',
+                    md: 'initial',
+                    }}
+                    variant="primary.main"
+                    display="block"
+                    onClick={() => { setModalState(false); }}
+                    style={{
+                    position: 'absolute', top: '30px', right: '30px',
+                }}
+            >
+                X
+        </Button>
         <Text
             variant="title"
             tag="h1"
@@ -61,9 +174,9 @@ function FormBase () {
         </Text>
             <div> 
                 <TextField 
-                    placeholder="E-mail" 
-                    name="email" 
-                    value={formData.email}
+                    placeholder="Nome" 
+                    name="nome" 
+                    value={formData.nome}
                     onChange={formHandler}
                 />
 
@@ -81,13 +194,20 @@ function FormBase () {
                 >
                     Cadastrar
                 </Button>
+
+                <SubmitFeedbackForm 
+                    isFormSubmited={isFormSubmited} 
+                    submissionStatus={submissionStatus}
+                />
+
             </div>
         </form>
 
     );
 }
 
-export default function FormCadastro ({ propsDoModal }) {
+// eslint-disable-next-line react/prop-types
+export default function FormCadastro ({ propsDoModal, setModalState }) {
 
     return (
     <Grid.Row
@@ -116,10 +236,25 @@ export default function FormCadastro ({ propsDoModal }) {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...propsDoModal}
           >
-            <FormBase />
+            <FormBase setModalState={setModalState}/>
           </Box>
         </Grid.Col>
     </Grid.Row>
 
     );
 }
+
+FormBase.propTypes = {
+    setModalState: PropTypes.func.isRequired, 
+  };
+
+
+SubmitFeedbackForm.propTypes = {
+    isFormSubmited: PropTypes.func.isRequired,
+    submissionStatus: PropTypes.func.isRequired, 
+  };
+
+FormCadastro.propTypes = {
+    setModalState: PropTypes.func.isRequired,
+    propsDoModal: PropTypes.func.isRequired, 
+  };

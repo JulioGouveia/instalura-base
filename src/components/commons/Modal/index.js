@@ -67,6 +67,7 @@ function Modal({ isOpen, onClose, children }) {
       }}
     >
       {isOpen && <LockScroll />}
+      
       <motion.div
         variant={motionVariant}
         animate={isOpen ? 'open' : 'close'}
@@ -76,6 +77,7 @@ function Modal({ isOpen, onClose, children }) {
         style={{
           display: 'flex',
           flex: '1',
+          flexDirection: 'column',
         }}
       >
         {children({

@@ -1,5 +1,5 @@
-/* eslint-disable eol-last */
 /* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
 
 import React from 'react';
 import styled from 'styled-components';

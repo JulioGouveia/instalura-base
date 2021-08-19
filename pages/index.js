@@ -24,16 +24,19 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
           setModalState(false);
         }}
       >
+
         {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
+
+          <FormCadastro propsDoModal={propsDoModal} setModalState={setModalState} />
+
         )}
+
       </Modal>
 
       <Menu />
