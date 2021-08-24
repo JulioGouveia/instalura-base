@@ -250,11 +250,11 @@ FormBase.propTypes = {
 
 
 SubmitFeedbackForm.propTypes = {
-    isFormSubmited: PropTypes.func.isRequired,
-    submissionStatus: PropTypes.func.isRequired, 
+    isFormSubmited: PropTypes.bool.isRequired,
+    submissionStatus: PropTypes.string.isRequired, 
   };
 
 FormCadastro.propTypes = {
     setModalState: PropTypes.func.isRequired,
-    propsDoModal: PropTypes.func.isRequired, 
+    propsDoModal: PropTypes.objectOf(PropTypes.any).isRequired, 
   };
