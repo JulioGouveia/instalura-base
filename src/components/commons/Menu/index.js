@@ -1,12 +1,13 @@
 /* eslint-disable linebreak-style */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Logo } from '../../../theme/Logo';
 import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
 import { Text } from '../../foundation/Text';
 
-export default function Menu() {
+export default function Menu({ onCadastrarClick }) {
   const links = [
     {
       texto: 'Home',
@@ -40,8 +41,17 @@ export default function Menu() {
       </MenuWrapper.Central>
       <MenuWrapper.RightSide>
         <Button ghost variant="secondary.main">Entrar</Button>
-        <Button variant="primary.main">Cadastrar</Button>
+        <Button
+          variant="primary.main"
+          onClick={onCadastrarClick}
+        >
+          Cadastrar
+        </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
 }
+
+Menu.propTypes = {
+  onCadastrarClick: PropTypes.func.isRequired,
+};
